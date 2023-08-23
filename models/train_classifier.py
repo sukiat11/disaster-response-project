@@ -108,9 +108,9 @@ def evaluate_model(model, X_test, Y_test, category_names:list):
         class_report_df = pd.DataFrame(class_report_results).iloc[:-1, :].T
         ax = sns.heatmap(class_report_df, annot=True)
         ax.set_title(title)
-        plt.savefig("classificationreport_%.png"%model_type, bbox_inches='tight')
-    except Exception as e:
-        print("\n\nError: ", e)
+        # plt.show()
+        plt.savefig("./images/report_%.png"%model_type, bbox_inches='tight')
+    except:
         class_report_df = classification_report(Y_test, Y_pred, target_names=category_names)
     print(f"\n\n{title}")
     print(class_report_df)
