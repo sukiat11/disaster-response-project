@@ -1,6 +1,13 @@
 # Disaster Response Pipeline Project
 
-### Instructions:
+## Introduction
+The data provided by FigureEight uses data containing real messages that were sent during disaster events.
+The aim of this project is to train an ML model to categorize these events.
+This project includes the machine learning pipeline and a web application that can be used to classify new input messages.
+
+### Instructions
+Pipeline has been tested with python 3.8
+
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -12,3 +19,33 @@
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+## File Structure
+- app - web app files
+    - run.py 
+- data - data and script to process it for classification
+    - disaster_messages.csv
+    - disaster_categories.csv
+    - process_data.py
+- models - contains pkl files and script to train the model
+    - train_classifier.py
+
+## Notes
+The data is very imbalanced. See figure below:
+![alt text](https://github.com/sukiat11/disaster-response-project/blob/main/images/class_distribution.png)
+
+
+A machine learning model that can handle this situation better would be a boosting algorithm. For example, the adaboost algorithm performed better
+than the linear svc algorithm. It handles the issue by maintaining a set of weights on the training data set in the learning process.
+
+
+## Results
+![alt text](https://github.com/sukiat11/disaster-response-project/blob/main/images/report_adaboost.png)
+
+
+
+
+
+
+
+
