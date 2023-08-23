@@ -41,11 +41,32 @@ def index():
     
     # extract data needed for visuals
     # create visuals
+    genre_counts = df.groupby('genre').count()['message']
+    genre_names = list(genre_counts.index)
+
     category_names = df.columns[4:]
     count_df = df.iloc[:,4:].apply(pd.value_counts).T
     count_df = count_df.sort_values(by=1, ascending=False).reset_index(drop=True)
 
     graphs = [
+        {
+            'data': [
+                Bar(
+                    x=genre_names,
+                    y=genre_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Genres',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Genre"
+                }
+            }
+        },
         {
             'data': [
                 Bar(
