@@ -35,7 +35,7 @@ def clean_data(df):
 
     # Remove extra characters and multiple spaces from col
     # Normalize to uppercase
-    df['message'] = df['message'].str.replace(r"[^a-zA-Z0-9]", " ", regex=True).str.upper()
+    df['message'] = df['message'].str.replace(r"[^a-zA-Z0-9]", " ", regex=True).str.lower()
     df['message'] = df['message'].str.replace(r"\s\s+", " ", regex=True).str.strip()
 
     # Remove column that has all values the same. Not useful for training
@@ -45,7 +45,7 @@ def clean_data(df):
 
 def save_data(df, database_filename):
     engine = create_engine('sqlite:///%s'%database_filename)
-    df.to_sql('InsertTableName', engine, index=False, if_exists='replace')
+    df.to_sql('messagesTable', engine, index=False, if_exists='replace')
 
 
 def main():
